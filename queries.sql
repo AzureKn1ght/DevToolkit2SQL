@@ -242,3 +242,47 @@ from
 order by
     t.customer_id ASC;
 
+--
+--Task1: using multiple joins together at the same time
+select
+    t.customer_id,
+    c.name as "customer name",
+    p.name as "product name",
+    t.amount
+from
+    transactions as t
+    left join customers as c on t.customer_id = c.id
+    left join products as p on t.product_id = p.id
+order by
+    t.customer_id ASC;
+
+--
+--Task2: For each customer, when was their last transaction
+--using left join so that we can get the null values
+select
+    t.customer_id as "id",
+    c.name as "name",
+    max(t.datetime) as "latest transaction"
+from
+    transactions as t
+    left join customers as c on t.customer_id = c.id
+group by
+    t.customer_id
+order by
+    t.customer_id ASC;
+
+--
+--Task3: All seller information and the average earnings
+select
+    s.id as "id",
+    s.name as "seller name",
+    s.wallet as "seller wallet",
+    avg(t.amount) as "average earnings"
+from
+    sellers as s
+    left join transactions as t on s.id = t.seller_id 
+group by
+    s.id
+order by
+    s.id ASC;
+
