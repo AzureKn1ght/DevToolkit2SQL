@@ -340,3 +340,23 @@ set
 where
     user_id = 2;
 
+--
+--alter table by deleting a column 
+alter table
+    users drop column dob;
+
+--add a column to table 
+alter table
+    users
+add
+    comments varchar(50);
+
+--modify a column in the table 
+alter table
+    users
+modify
+    column name varchar(128);
+
+--rename a column in the table 
+ALTER TABLE
+    users RENAME COLUMN name TO fullname;
