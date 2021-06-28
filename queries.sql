@@ -122,4 +122,15 @@ select
 from
     transactions
 where
-    product_id in (2, 4, 6)
+    product_id in (2, 4, 6);
+
+--
+--Ex4: show top 5 customers by wallet balance
+select
+    *
+from
+    customers
+order by
+    wallet DESC
+limit
+    5;
