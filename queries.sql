@@ -134,3 +134,111 @@ order by
     wallet DESC
 limit
     5;
+
+--
+--using the count function
+select
+    count(*)
+from
+    customers
+where
+    wallet > 7500;
+
+--
+--using the max and min function
+select
+    max(wallet) as "Max Wallet",
+    min(wallet) as "Min Wallet"
+from
+    customers;
+
+--
+--NOW function does not depend on any data
+select
+    now();
+
+--Task2
+--finding avg wallet from customers of diff types
+select
+    avg(wallet)
+from
+    customers;
+
+--but the above only gives one value (the average)!
+--we use multiple columns and group by to get it
+select
+    type,
+    avg(wallet)
+from
+    customers
+group by
+    type;
+
+--similarly, we can count the number for each type
+select
+    type,
+    count(wallet)
+from
+    customers
+group by
+    type;
+
+--Task 1
+--View highest balance for each tolerance level
+select
+    tolerance,
+    max(wallet)
+from
+    customers
+group by
+    tolerance;
+
+--Task 3
+--View the number of items sold for each product ID
+select
+    product_id,
+    sum(quantity)
+from
+    transactions
+group by
+    product_id;
+
+--
+--using inner joins 
+select
+    t.customer_id,
+    c.name,
+    t.amount,
+    t.datetime
+from
+    transactions as t
+    inner join customers as c on t.customer_id = c.id
+order by
+    t.customer_id ASC;
+
+--
+--using left joins (same, every transaction has a cust)
+select
+    t.customer_id,
+    c.name,
+    t.amount,
+    t.datetime
+from
+    transactions as t
+    left join customers as c on t.customer_id = c.id
+order by
+    t.customer_id ASC;
+
+--
+--using right joins (nulls, some cust no transactions)
+select
+    t.customer_id,
+    c.name,
+    t.amount,
+    t.datetime
+from
+    transactions as t
+    right join customers as c on t.customer_id = c.id
+order by
+    t.customer_id ASC;
+
