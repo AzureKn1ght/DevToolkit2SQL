@@ -273,6 +273,7 @@ order by
 
 --
 --Task3: All seller information and the average earnings
+--note that we can also use s.* for all the columns in s
 select
     s.id as "id",
     s.name as "seller name",
@@ -280,9 +281,20 @@ select
     avg(t.amount) as "average earnings"
 from
     sellers as s
-    left join transactions as t on s.id = t.seller_id 
+    left join transactions as t on s.id = t.seller_id
 group by
     s.id
 order by
     s.id ASC;
 
+--
+--Task2: View all products related to "Google"
+select
+    *
+from
+    products
+where
+    name like "Google%";
+
+--create a database
+create database b11_phil;
