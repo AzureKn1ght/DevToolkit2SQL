@@ -296,5 +296,47 @@ from
 where
     name like "Google%";
 
+--
 --create a database
 create database b11_phil;
+
+--
+--create a table
+--Note that we can also use AUTO INCREMENT
+create table users (
+    user_id int,
+    name varchar(50),
+    dob date,
+    mobile_number int,
+    ic_number int,
+    primary key (user_id)
+);
+
+--
+--Add new data into the table
+--Note that date is 'YYYY-MM-DD'
+insert into
+    users (user_id, name, dob, mobile_number, ic_number)
+values
+    ('1', 'Phil', '2002-02-02', '98765432', '1234567'),
+    ('2', 'Son', '2001-01-01', '98123456', '7654321');
+
+--
+--deleting from a table 
+--will delete all users if where not specified
+delete from
+    users
+where
+    user_id = 2;
+
+--
+--updating data in a table
+--will override all if where is not specified
+update
+    users
+set
+    name = "philson",
+    mobile_number = '11111111'
+where
+    user_id = 2;
+
