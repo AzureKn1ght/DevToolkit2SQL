@@ -360,3 +360,7 @@ modify
 --rename a column in the table 
 ALTER TABLE
     users RENAME COLUMN name TO fullname;
+
+--
+--delete the database altogether! 
+drop database b11_phil;
